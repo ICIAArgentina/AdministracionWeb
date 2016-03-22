@@ -1,0 +1,320 @@
+@media (max-width: 1000px){
+	.aNav{
+		display: block;
+	}
+	#imgT{
+		width: 480px; 		 
+	}
+	#columnaIzq
+	{
+		position: absolute;
+		width:200px;
+	}
+	#columnaCentro
+	{
+		position: absolute;
+		left:200px;
+	}
+}
+
+@media (min-width: 1001px){
+	.aNav{
+		display: inline;
+		margin-right: 20px;
+	}
+	#imgT{
+		width: 100%; 
+	
+	}
+	#columnaIzq
+	{
+		position: absolute;
+		width:20%;
+	}
+	#columnaCentro
+	{
+		position: absolute;
+		left:20%;
+	}
+}
+
+body{
+	font-family: verdana, courier;
+}
+
+#idMain{
+	margin: 4%;
+}
+#contenidoMain{
+	 text-align: justify;
+}
+
+#tListaAlumno table{
+	margin-left: 10%;
+	text-align:center;
+	width: 80%;
+	padding: 15px;
+}
+
+#tListaAlumno th{
+	background-color: #000000;
+	height: 50px;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#tListaAlumno td, #tListaAlumno th {
+   border: 1px solid black;
+}
+
+header{
+	padding: 5px;
+	background-color: #C0C0C0;	/*Silver*/
+	color: #25383C;	/*Dark Slate Grey*/
+	text-align: center;
+}
+
+footer{
+	background-color: #C0C0C0;	/*Silver*/
+	color: #25383C;	/*Dark Slate Grey*/
+	font-weight: bold;
+	width: 100%;
+	padding: 5px;
+	text-indent: 15px;
+}
+
+
+
+#login{
+	text-align: right;
+}
+
+#logout{
+	text-align: right;
+}
+
+nav{
+	padding: 10px;
+	height: 15px;
+	background-color: #25383C;	/*Dark Slate Grey*/;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+nav ul{
+	padding-left:40px;
+	margin:0;
+}
+
+nav li{
+	position: relative;
+	float:left;
+	list-style-type: none;
+}
+
+nav li a {
+	display: block;
+	padding: 10px 55px;
+	border-left: 1px solid  #d9534f;
+	color:  #C0C0C0;	/*Silver*/
+	text-decoration: none; 
+	font-weight: bold;
+}
+
+aside h3{
+	margin: 10px;
+	color: #d9534f;
+}
+aside{
+	padding: 20px 0px;
+}
+aside form label{
+	display: block;
+	padding: 10px 10px;
+}
+
+#dataContainer  ul{
+	padding: 40px;
+	margin: 0;
+}
+#dataContainer li{
+	position: relative;
+	list-style-type: none;
+}
+
+#dataContainer li a {
+	display: block;
+	width: 55%;
+	text-align: center;
+	padding: 10px 5px;
+	border: 1px solid  #d9534f;
+	color: #000;
+	text-decoration: none; 
+}
+
+#altaUsuarios form {
+	text-align: center;
+}
+#altaUsuarios form label{
+	display: block;
+	padding: 10px 10px;
+}
+
+#inputBorder {
+	width: 150px;
+	padding: 5px;
+}
+
+.fDatos{
+	font-size: 24px;
+	display: block;
+}
+
+.bDatos{
+	font-size: 18px;
+	padding: 10px;
+}
+
+#logout{
+	text-align: right;
+	background-color: #C0C0C0;	/*Silver*/
+	margin-left:90%;
+	display: inline-block;
+}
+
+#dTitle{	
+    height: 50px;
+    color: #C0C0C0;	/*Silver*/
+    text-transform: uppercase;
+    font-size: 26px;
+   	background-attachment: fixed;
+ }
+
+#dTitleC1{
+    display: block;
+    background-color: #25383C;	/*Dark Slate Grey*/
+    height: inherit;
+}
+
+#dTitleC1 h3{
+	padding: 10px;
+	text-align: center;
+	padding-left: 200px;
+}
+
+#logOut{
+    float: left;
+    display: block;
+    width: 20%;
+    height: inherit;	
+    background-color: #CC9933;
+}
+
+#flogOut{
+	height: inherit;
+}
+
+#flogOut input{
+	color: #C0C0C0;	/*Silver*/
+	font-weight: bold;
+	font-size: 18px;
+	height: 50px;
+	width: 100%;	
+}
+
+#fLogin{
+	padding: 10px;
+	font-size: 18px;
+}
+
+.fDatos{
+	font-size: 24px;
+	display: block;
+}
+
+.bDatos{
+	font-size: 18px;
+	padding: 10px;
+}
+
+#fLoginSubmit{
+	padding: 15px;
+}
+
+#cabecera{
+	padding: 5px;
+	text-align: center;
+	background-color: #C0C0C0; /*Silver*/
+	color: #25383C;	/*Dark Slate Grey*/
+}
+
+/*Estilo nuevo*/
+
+#contenido
+{
+	position: relative;
+	height:1500px;
+}
+#pie
+{
+	position:relative;
+	height:40px;
+	background-color:#3366CC;
+	text-align: center;
+	color: white;
+}
+/*COLUMNA IZQ*/
+
+#columnaIzq
+{
+	height:100%;
+	background-color: #25383C;	/*Dark Slate Grey*/
+}
+/*FIN COLUMNA IZQ*/
+
+/*CENTRO*/
+#columnaCentro
+{
+/*	padding:0 1% 0 1%;	*/
+	width:80%;
+	height:100%;
+}
+
+/*FIN CENTRO*/
+/*MENU*/
+	#contenedorMenu
+	{
+		position:absolute;
+		width:100%;
+	}
+	
+	#menu {
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	#menu li {	
+		padding:0;
+	}
+
+	#menu li a
+	{
+		display:block; /*Convertimos el vínculo en un bloque.*/
+		padding:4px 8px;
+		text-decoration:none;
+		font-family: verdana,courier;
+		font-size:120%;
+		color:#C0C0C0; /*Silver*/
+		background-color:#25383C;	/*Dark Slate Grey*/
+		text-transform: uppercase;
+		width: 94%;
+	}
+
+	#menu li a:hover {	
+		color:#25383C;	/*Dark Slate Grey*/
+		background-color:#C0C0C0; /*Silver*/
+	}
+
+/*FIN MENU*/

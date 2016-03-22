@@ -1,0 +1,59 @@
+{% extends "backend.html.twig" %}
+{% block titulo %}
+<div id="cabecera">
+	<h3>Listado de Miembros</h3>
+</div>
+{% endblock %}
+{% block contenido %}
+	<a href="backend.php?seccion=AgregarMiembro">Agregar Miembro</a> 
+	<table id="tabLista" border=1>
+		<tr>
+			<th>DNI</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	{% for item in recursos.datosSeccion.listaMiembros %}
+		<tr>
+			<td>{{ item.numeroDocumento }}</td>
+			<td>{{ item.nombre }}</td>
+			<td>{{ item.apellido }}</td>
+			<td>
+				<a href="backend.php?seccion=ModificarMiembro&amp;id={{ item.id }}">
+				<img border="0" alt="Icono Modificar Miembro" src="IMG/edit.png" width="25" height="25"></a>
+			</td>
+			<td>
+				<a href="action.php?accion=EliminarMiembro&amp;id={{ item.id }}">
+				<img border="0" alt="Icono Eliminar Miembro" src="IMG/delete.png" width="25" height="25"></a>
+			</td>
+		</tr>
+    {% endfor %}
+	</table>
+	{% if ( recursos.datosSeccion.cantPaginas > 0 ) %}
+		{% if ( recursos.datosSeccion.pagina == 0 ) or ( recursos.datosSeccion.pagina == 1 )  %} 
+			{% set inicio = 0 %}
+		{% else %}
+			{% set inicio = (recursos.datosSeccion.pagina - 2) %}
+		{% endif %}
+		{% if ( recursos.datosSeccion.cantPaginas - ( inicio + 5 ) ) >= 0 %}
+			{% set fin = inicio + 4 %}
+		{% else %}
+			{% set fin = recursos.datosSeccion.cantPaginas %}
+		{% endif %}	
+		{% if inicio > 0 %}
+			<a href="backend.php?seccion=ABMMiembros&amp;pagina={{ recursos.datosSeccion.pagina - 1 }}"><</a> | 
+		{% endif %}
+		{% for i in inicio..fin %}	
+			{% if i == recursos.datosSeccion.pagina %}
+			    {{ i + 1 }}
+			{% else %}
+				<a href="backend.php?seccion=ABMMiembros&amp;pagina={{ i }}">{{ i + 1 }}</a>
+			{% endif %}
+		{% endfor %}
+		{% if fin <	recursos.datosSeccion.cantPaginas %}
+			 | <a href="backend.php?seccion=ABMMiembros&amp;pagina={{ recursos.datosSeccion.pagina + 1 }}">></a> 
+		{% endif %}
+	{% endif %}
+{% endblock %}

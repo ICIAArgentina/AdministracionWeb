@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Ricardo Gamarra">
+	<meta charset="utf-8">
+	<title>​Acceder al Administraci&oacuten</title>	
+	<link rel="stylesheet" type="text/css" href="CSS/styleIndex.css">
+</head>
+<body>
+	<div id="login">Bienvenido</div>
+		<section>
+			<div id="dTitle">
+				<div id="dTitleC1">
+					<h3>Identificarse</h3>
+				</div>
+			</div>	
+			<form id="fLogin" action="login.php" method="post">
+				<label for="nombre">Usuario: </label>
+				<div id="inputBorder">
+					<input class="fDatos" type="text" name="nombre" id="nombre" placeholder="Usuario" required=""/><br/>
+				</div>
+				<label for="password">Contrase&ntildea: </label>
+				<div id="inputBorder">
+					<input class="fDatos" type="password" name="password" id="password" placeholder="Contraseña" required=""/>
+				</div>
+
+				<div>
+					<button class="bDatos" type="submit" value="Ingresar">Ingresar</button>
+					<form id="fLoginSubmit" action="index.php" method="post">
+						<button class="bDatos" type="submit" value="Cancelar">Cancelar</button>
+					</form>
+				</div>
+			</form>
+		</section>
+</body>
+</html>

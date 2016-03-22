@@ -1,0 +1,42 @@
+{% extends "backend.html.twig" %}
+{% block titulo %}
+<div id="cabecera">
+	<h3>Nuevo Alumno</h3>
+</div>
+{% endblock %}
+{% block contenido %}
+<div id="dataContainer">
+	<form action="action.php" method="post">
+		<input class="fDatos" id="accion" name="accion" type="hidden" value="AgregarAlumno"/>
+		<select id="tipoDoc" name="tipoDoc">
+			  <option value="LE">LE</option>
+			  <option selected value="DNI">DNI</option>
+		</select>
+		<label for="dni">Numero de documento: </label>
+		<input id="dni" type="number" name="dni" placeholder="DNI" required=""/>
+		<label for="apellido">Apellido: </label>
+		<input id="apellido" type="text" name="apellido" placeholder="Apellido" required=""/>
+		<label for="nombre">Nombre: </label>
+		<input id="nombre" type="text" name="nombre" placeholder="Nombre" required=""/>
+		<label for="fechaNac">Fecha de nacimiento: </label>
+		<input id="fechaNac" type="date" name="fechaNac" placeholder="Fecha de nacimiento" required=""/>
+		<label for="sexo">Sexo: </label>
+		<select id="sexo" name="sexo">
+			  <option value="F">Femenino</option>
+			  <option selected value="M">Masculino</option>
+		</select>	
+		<label for="mail">Mail: </label>
+		<input id="mail" type="text" name="mail" placeholder="Mail"/>
+		<label for="tel">Telefono: </label>
+		<input id="tel" type="text" name="tel" placeholder="Telefono" required=""/>
+		<label for="direccion">Direccion: </label>
+		<input id="direccion" type="text" name="direccion" placeholder="Direccion" required=""/>
+		<label for="fechaIng">Fecha de ingreso: </label>
+		<input id="fechaIng" type="date" name="fechaIng" placeholder="Fecha de ingreso" required=""/> 
+		<label for="fechaEgreso">Fecha de egreso: </label>
+		<input id="fechaEgreso" type="date" name="fechaEgreso" placeholder="Fecha de egreso" required=""/> 
+		<br>
+		<button type="submit" value="Aceptar"> Aceptar </button> 
+	</form>
+</div>
+{% endblock %}

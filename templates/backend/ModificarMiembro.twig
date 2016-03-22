@@ -1,0 +1,41 @@
+{% extends "backend.html.twig" %}
+{% block titulo %}
+<div id="cabecera">
+	<h3>Modificaci&oacuten de Alumno</h3>
+</div>
+{% endblock %}
+{% block contenido %}
+<div id="dataContainer">
+	<form action="action.php" method="post">
+		<input class="fDatos" id="accion" name="accion" type="hidden" value="ModificarAlumno"/>
+		<input class="fDatos" id="id" name="id" type="hidden" value="{{ recursos.datosSeccion.id }}"/>
+		<select id="tipoDocumento" name="tipoDocumento">
+			  <option {% if recursos.datosSeccion.tipoDocumento == 'LE' %} selected {% endif %} value="LE">LE</option>
+			  <option {% if recursos.datosSeccion.tipoDocumento == 'DNI' %} selected {% endif %}  value="DNI">DNI</option>
+		</select>
+		<label for="dni">Numero de documento: </label>
+		<input id="dni" type="number" name="dni" placeholder="DNI" required="" value="{{ recursos.datosSeccion.numeroDocumento }}"/>
+		<label for="apellido">Apellido: </label>
+		<input id="apellido" type="text" name="apellido" placeholder="Apellido" required="" value="{{ recursos.datosSeccion.apellido }}"/>
+		<label for="nombre">Nombre: </label>
+		<input id="nombre" type="text" name="nombre" placeholder="Nombre" required="" value="{{ recursos.datosSeccion.nombre }}"/>
+		<label for="fechaNac">Fecha de nacimiento: </label>
+		<input id="fechaNac" type="date" name="fechaNac" placeholder="Fecha de nacimiento" required="" value="{{ recursos.datosSeccion.fechaNacimiento }}"/>
+		<label for="sexo">Sexo: </label>
+		<select id="sexo" name="sexo">
+		  <option {% if recursos.datosSeccion.sexo == 'F' %} selected {% endif %} value="F">Femenino</option>
+		  <option {% if recursos.datosSeccion.sexo == 'M' %} selected {% endif %} value="M">Masculino</option>
+		</select>	
+		<label for="mail">Mail: </label>
+		<input id="mail" type="text" name="mail" placeholder="Mail" value="{{ recursos.datosSeccion.mail }}"/>
+		<label for="direccion">Direccion: </label>
+		<input id="direccion" type="text" name="direccion" placeholder="Direccion" required="" value="{{ recursos.datosSeccion.direccion }}"/>
+		<label for="fechaIng">Fecha de ingreso: </label>
+		<input id="fechaIng" type="date" name="fechaIng" placeholder="Fecha de ingreso" required="" value="{{ recursos.datosSeccion.fechaIngreso }}"/> 
+		<label for="fechaEgreso">Fecha de egreso: </label>
+		<input id="fechaEgreso" type="date" name="fechaEgreso" placeholder="Fecha de egreso" required="" value="{{ recursos.datosSeccion.fechaEgreso }}"/> 
+		<br>
+		<button type="submit" value="Aceptar"> Aceptar </button> 
+	</form>
+</div>
+{% endblock %}

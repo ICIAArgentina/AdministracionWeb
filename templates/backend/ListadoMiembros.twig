@@ -1,0 +1,47 @@
+{% extends "backend.html.twig" %}
+{% block titulo %}
+<div id="cabecera">
+	<h3>Listado de Alumnos</h3>
+</div>
+{% endblock %}
+{% block contenido %}
+	<table id="tabLista" border=1>
+		<tr>
+			<th>DNI</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+		</tr>
+	{% for item in recursos.datosSeccion.listaAlumnosMatrPaga %}
+		<tr>
+			<td>{{ item.numeroDocumento }}</td>
+			<td>{{ item.nombre }}</td>
+			<td>{{ item.apellido }}</td>
+		</tr>
+    {% endfor %}
+	</table>
+	{% if ( recursos.datosSeccion.cantPaginas > 0 ) %}
+		{% if ( recursos.datosSeccion.pagina == 0 ) or ( recursos.datosSeccion.pagina == 1 )  %} 
+			{% set inicio = 0 %}
+		{% else %}
+			{% set inicio = (recursos.datosSeccion.pagina - 2) %}
+		{% endif %}
+		{% if ( recursos.datosSeccion.cantPaginas - ( inicio + 5 ) ) >= 0 %}
+			{% set fin = inicio + 4 %}
+		{% else %}
+			{% set fin = recursos.datosSeccion.cantPaginas %}
+		{% endif %}	
+		{% if inicio > 0 %}
+			<a href="backend.php?seccion=ListadoAlumnos&amp;pagina={{ recursos.datosSeccion.pagina - 1 }}"><</a> | 
+		{% endif %}
+		{% for i in inicio..fin %}	
+			{% if i == recursos.datosSeccion.pagina %}
+			    {{ i + 1 }}
+			{% else %}
+				<a href="backend.php?seccion=ListadoAlumnos&amp;pagina={{ i }}">{{ i + 1 }}</a>
+			{% endif %}
+		{% endfor %}
+		{% if fin <	recursos.datosSeccion.cantPaginas %}
+			 | <a href="backend.php?seccion=ListadoAlumnos&amp;pagina={{ recursos.datosSeccion.pagina + 1 }}">></a> 
+		{% endif %}
+	{% endif %}
+{% endblock %}
