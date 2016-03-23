@@ -18,13 +18,8 @@ if(isset($_SESSION["usuario"])){ 			// verficamos que la variable de sesion haya
 		}
 		else
 		{ 
-			if (isset($_GET["accion"])) { 
-				$accion=$_GET["accion"]; 
-			} 
-			else 
-			{ 
-				$accion="Principal";
-			}	
+			if (isset($_GET["accion"])) { $accion=$_GET["accion"]; } 
+			else { $accion="Principal"; }	
 		}
 		if($accion !== null){
 			if(ResourceRepository::getInstance()->tienePermisos($usuario->getId(), $accion)) { //validacion de accion
@@ -53,22 +48,26 @@ if(isset($_SESSION["usuario"])){ 			// verficamos que la variable de sesion haya
 			        	ResourceRepository::getInstance()->bajaUsuario($BajaID);
 			            header('location:backend.php?seccion=ABMUsuarios');
 			            break;
-			        case "AgregarAlumno":
-			        	$AltaTipoDocumento=$_POST["tipoDoc"];
-			        	$AltaNumeroDocumento=$_POST["dni"];
-			        	$AltaNombre=$_POST["nombre"];
-			        	$AltaApellido=$_POST["apellido"];
-			        	$AltaFechaNac=$_POST["fechaNac"];
-			        	$AltaSexo=$_POST["sexo"];
-			        	$AltaMail=$_POST["mail"];
-			        	$AltaDireccion=$_POST["direccion"];
-			        	$AltaFechaIngreso=$_POST["fechaIng"];
-			        	$AltaFechaEgreso=$_POST["fechaEgreso"];
-			        	$AltaFechaAlta=date("Y-m-d");
-			        	if(ResourceRepository::getInstance()->alumnoExistente($AltaTipoDocumento,$AltaNumeroDocumento)) {
+			        case "AgregarMiembro":
+			        	$NumeroDocumento=$_POST["dni"];
+			        	$TipoDocumento=$_POST["tipoDoc"];
+			        	$Nombre=$_POST["nombre"];
+			        	$Apellido=$_POST["apellido"];
+			        	$FechaNac=$_POST["fechaNac"];
+			        	$Sexo=$_POST["sexo"];
+			        	$Mail=$_POST["mail"];
+			        	$Facebook=$_POST["facebook"];			       
+			        	$Direccion=$_POST["direccion"];
+			        	$Telefono1=$_POST["telefono1"];
+			        	$Telefono2=$_POST["telefono2"];
+			        	$FechaIngreso=$_POST["fechaIng"];
+			        	$Bautizado=$_POST["bautizado"];
+			        	$FechaBautismo=$_POST["fechaBautismo"];			        	
+			        	$FechaAlta=date("Y-m-d");
+			        	if(ResourceRepository::getInstance()->miembroExistente($TipoDocumento,$NumeroDocumento)) {
 			            	header('location:backend.php?seccion=AgregarAlumno&mensaje=existe');			        		
 			        	} else {
-			        	ResourceRepository::getInstance()->altaAlumno($AltaTipoDocumento, $AltaNumeroDocumento, $AltaNombre, $AltaApellido, $AltaFechaNac, $AltaSexo, $AltaMail, $AltaDireccion, $AltaFechaIngreso, $AltaFechaEgreso, $AltaFechaAlta);
+			        	ResourceRepository::getInstance()->altaMiembro($TipoDocumento, $NumeroDocumento, $Nombre, $Apellido, $FechaNac, $Sexo, $Mail, $Facebook, $Direccion, $Telefono1, $Telefono2, $FechaIngreso, $Bautizado, $FechaBautismo, $FechaAlta);
 			            header('location:backend.php?seccion=ABMAlumnos');
 			        	}
 			        	break;
@@ -108,7 +107,7 @@ if(isset($_SESSION["usuario"])){ 			// verficamos que la variable de sesion haya
 			        	ResourceRepository::getInstance()->modificarConfiguracion($titulo, $descripcion, $email, $cantItems, $habilitado, $mensajeDeshabilitado);
 			            header('location:backend.php?seccion=Configuracion');
 			            break;
-					}
+				}
 			}
 		}
     }

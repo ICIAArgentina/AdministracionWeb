@@ -12,13 +12,16 @@ require_once('view/SimpleResourceList.php');
 require_once('view/Home.php');
 //VERIFICAMOS QUE LA VARIABLE DE SESION HAYA SIDO CREADA
 if(isset($_SESSION["usuario"])){
-	$usuario=unserialize($_SESSION["usuario"]); 		// buscamos el valor de sesion de usuario
- 	if(ResourceRepository::getInstance()->usuarioValido($usuario->getUsername(),$usuario->getPassword())) { 			// verificamos que el usuario este habilitado y el password sea correcto
- 		$configuracion = ResourceRepository::getInstance()->getConfiguracion();// Buscamos configuracion del swf_oncondition(transition)
- 		$seccion = $_GET["seccion"];
+	// BUSCAMOS EL VALOR DE SESION DE USUARIO
+	$usuario=unserialize($_SESSION["usuario"]);
+	// VERIFICAMOS QUE EL USUARIO ESTE HABILITADO Y EL PASSWORD SEA CORRECTO
+ 	if(ResourceRepository::getInstance()->usuarioValido($usuario->getUsername(),$usuario->getPassword())) {
+		// BUSCAMOS CONFIGURACION DEL SWF_ONCONDITION(TRANSITION)
+ 		$configuracion = ResourceRepository::getInstance()->getConfiguracion();
+ 		if(isset($_GET['seccion'])){ $seccion=$_GET['seccion'];	}
+ 		else{ $seccion="Principal"; }
 	    ResourceController::getInstance()->backend($seccion, 0, $usuario, $configuracion); //cargar el inicio      
 	} else { header('location:login.php');	}
 }  else {
 	header('location:login.php');
 }
-die('A ver si anda');

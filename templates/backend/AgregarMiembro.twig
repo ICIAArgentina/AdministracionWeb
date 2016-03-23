@@ -1,13 +1,18 @@
 {% extends "backend.html.twig" %}
 {% block titulo %}
 <div id="cabecera">
-	<h3>Nuevo Alumno</h3>
+	<h3>Nuevo Miembro</h3>
 </div>
 {% endblock %}
 {% block contenido %}
 <div id="dataContainer">
-	<form action="action.php" method="post">
-		<input class="fDatos" id="accion" name="accion" type="hidden" value="AgregarAlumno"/>
+	<form action="action.php" method="post" enctype="multipart/form-data">
+		<input class="fDatos" id="accion" name="accion" type="hidden" value="AgregarMiembro"/>
+		<label for="codigo">C&oacute;digo: </label>
+		<input id="codigo" type="text" name="codigo" placeholder="codigo" required=""/>
+		<label for="foto">Foto: </label>
+		<input id="foto" type="file" name="foto"/>		
+		<label for="tipoDoc">Tipo de Documento: </label>
 		<select id="tipoDoc" name="tipoDoc">
 			  <option value="LE">LE</option>
 			  <option selected value="DNI">DNI</option>
@@ -27,16 +32,23 @@
 		</select>	
 		<label for="mail">Mail: </label>
 		<input id="mail" type="text" name="mail" placeholder="Mail"/>
-		<label for="tel">Telefono: </label>
-		<input id="tel" type="text" name="tel" placeholder="Telefono" required=""/>
+		<label for="facecbook">facebook: </label>
+		<input id="facebook" type="text" name="facebook" placeholder="facebook"/>
 		<label for="direccion">Direccion: </label>
 		<input id="direccion" type="text" name="direccion" placeholder="Direccion" required=""/>
-		<label for="fechaIng">Fecha de ingreso: </label>
-		<input id="fechaIng" type="date" name="fechaIng" placeholder="Fecha de ingreso" required=""/> 
-		<label for="fechaEgreso">Fecha de egreso: </label>
-		<input id="fechaEgreso" type="date" name="fechaEgreso" placeholder="Fecha de egreso" required=""/> 
-		<br>
-		<button type="submit" value="Aceptar"> Aceptar </button> 
+		<label for="telefono1">Telefono 1: </label>
+		<input id="telefono1" type="text" name="telefono1" placeholder="Telefono 1" required=""/>
+		<label for="telefono2">Telefono 2: </label>
+		<input id="telefono2" type="text" name="telefono2" placeholder="Telefono 2" required=""/>
+		<label for="fechaIngreso">Fecha de ingreso: </label>
+		<input id="fechaIngreso" type="date" name="fecha Ingreso" placeholder="Fecha de ingreso" required=""/> 
+		<label for="Bautizado">Bautizado: </label>
+		<input id="Bautizado" type="checkbox" name="Bautizado" required=""/> 
+		<label for="fechaBautismo">Fecha de Bautismo: </label>
+		<input id="fechaBautismo" type="date" name="fechaBautismo" placeholder="Fecha de Bautismo" required=""/> 
+		<div class="bDatos">
+			<button type="submit" value="Aceptar"> Aceptar </button> 
+		</div>
 	</form>
 </div>
 {% endblock %}
