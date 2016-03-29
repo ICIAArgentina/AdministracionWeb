@@ -74,6 +74,4 @@ abstract class PDORepository {
         $stmt->execute($args);
         return $stmt->fetch()['cantidad'];
     }
-
-
 }

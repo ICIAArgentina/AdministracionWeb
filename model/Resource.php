@@ -31,7 +31,7 @@ class Miembro {
     private $apellido;
     private $fechaNacimiento;
     private $sexo;
-    private $mail;
+    private $eMail;
     private $facebook;
     private $direccion;
     private $telefono1;
@@ -44,17 +44,18 @@ class Miembro {
     private $idLocalidad;
     private $idBarrio;
     
-    public function __construct($idMiembro, $codigo, $nombre, $apellido, $fechaNacimiento, $sexo, $mail, $facebook,
-        $direccion, $telefono1, $telefono2, $fechaIngreso, $fechaEgreso, $fechaAlta, $fechaBaustismo,
-        $bautizado, $idLocalidad, $idBarrio) {
+    public function __construct($idMiembro, $codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, $fechaNacimiento, $sexo, $eMail, $facebook,
+        $direccion, $telefono1, $telefono2, $fechaIngreso, $fechaEgreso, $fechaAlta, $bautizado, $fechaBaustismo,
+        $foto, $idIglesia, $idLocalidad, $idBarrio) {
         $this->idMiembro = $idMiembro;
+        $this->codigo = $codigo;        
         $this->tipoDocumento = $tipoDocumento;
         $this->numeroDocumento = $numeroDocumento;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->fechaNacimiento = $fechaNacimiento;
         $this->sexo = $sexo;
-        $this->mail = $mail;
+        $this->eMail = $eMail;
         $this->facebook = $facebook;
         $this->direccion = $direccion;
         $this->telefono1 = $telefono1;
@@ -64,6 +65,8 @@ class Miembro {
         $this->fechaAlta = $fechaAlta;
         $this->fechaBaustismo = $fechaBaustismo;
         $this->bautizado = $bautizado;
+        $this->foto = $foto;
+        $this->idIglesia = $idIglesia;
         $this->idBarrio = $idBarrio;
         $this->idLocalidad = $idLocalidad;
     }
@@ -92,8 +95,8 @@ class Miembro {
     public function getFacebook() {
         return $this->facebook;
     }
-    public function getMail() {
-        return $this->mail;
+    public function getEMail() {
+        return $this->eMail;
     }
     public function getDireccion() {
         return $this->direccion;
@@ -119,6 +122,12 @@ class Miembro {
     public function getBautizado() {
         return $this->bautizado;
     }
+    public function getFoto() {
+        return $this->foto;
+    }
+    public function getIdIglesia() {
+        return $this->idIglesia;
+    }
     public function getIdBarrio() {
         return $this->idBarrio;
     }
@@ -136,7 +145,7 @@ class Usuario {
     private $habilitado;
  
     public function __construct($idUsuario, $idMiembro, $idTipoUsuario, $username, $password, $habilitado) {
-        $this->idUuario = $idUsuario;
+        $this->idUsuario = $idUsuario;
         $this->idMiembro = $idMiembro;
         $this->idTipoUsuario = $idTipoUsuario;
         $this->username = $username;

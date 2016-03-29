@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="author" content="grupo 31">
+	<meta name="author" content="Ricardo Gamarra">
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>​{{ recursos.titulo }}</title>	
 	<link rel="stylesheet" type="text/css" href="CSS/styleIndex.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
 </head>
 <body>
-	<div id="login">Ud. no esta identificado. <a href="login.php">Entrar</a></div>
-	<header>
-		<h1>{{ recursos.titulo }}</h1>
-		<figure>
-			<img id="imgT" alt="Foto Pastores" longdesc="Foto%20de%20los%20pastores%20de%20la%20iglesia" src="IMG/pastores.jpg">
-		</figure>
-	</header>
+	<div class="container">
+		<div id="login">Sesi&oacute;n no Iniciada <a href="login.php">Iniciar Sesi&oacute;n</a></div>
+		<header>
+			<h1>{{ recursos.titulo }}</h1>
+			<figure>
+				<img id="imgT" alt="Foto Pastores" longdesc="Foto%20de%20los%20pastores%20de%20la%20iglesia" src="IMG/pastores3.jpg">
+			</figure>
+		</header>
 
-	<div id="contenido">
-		<div id="columnaIzq">
-			<div id="contenedorMenu">
-				<ul id= "menu">
-					<li><a class="aNav" href="index.php">Inicio</a></li>
-					<li><a class="aNav" href="index.php?seccion=Historia">Acerca de Nosotros</a></li>
-					<li><a class="aNav" href="index.php?seccion=Museo">Iglesia</a></li>
-					<li><a class="aNav" href="index.php?seccion=InfDocente">Informacion</a></li>
-					<li><a class="aNav" href="index.php?seccion=Contacto">Contacto</a></li>
-				</ul>
+		<div id="contenido">
+			<div id="columnaIzq">
+				<div id="contenedorMenu">
+					<ul id= "menu">
+						<li><a class="aNav" href="index.php">Inicio</a></li>
+						<li><a class="aNav" href="index.php?seccion=Historia">Acerca de Nosotros</a></li>
+						<li><a class="aNav" href="index.php?seccion=Invasion">Invasi&oacute;n</a></li>
+						<li><a class="aNav" href="index.php?seccion=Informacion">Informacion</a></li>
+						<li><a class="aNav" href="index.php?seccion=Contacto">Contacto</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="columnaCentro">
+		 		<div id="contenidoMain">{% block contenido %}{% endblock %}
+				</div>
 			</div>
 		</div>
-		<div id="columnaCentro">
-	 		<div id="contenidoMain">{% block contenido %}{% endblock %}
-			</div>
-		</div>
+		<footer>	
+			<p>ICIA - Tu Hogar de Paz</p>
+	  		<p><a href="mailto:{{ recursos.email }}">Contactar</a>.</p>
+		</footer>
 	</div>
-	<footer>	
-		<p>ICIA - Tu Hogar de Paz</p>
-  		<p><a href="mailto:{{ recursos.email }}">Contactar</a>.</p>
-	</footer>
 </body>
 </html>

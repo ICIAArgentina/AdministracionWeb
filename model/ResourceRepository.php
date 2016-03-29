@@ -30,15 +30,15 @@ class ResourceRepository extends PDORepository {
     /*---------------------------------------Listados----------------------------------------*/
     public function listarMiembros() {
         $mapper = function($row) {  
-            $Miembro = new Miembro($row['idMiembro'], $row['Codigo'], $row['tipoDocumento'],$row['numeroDocumento'], 
-            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['mail'],
-            $row['FaceBook'], $row['direccion'], $row['Telefono1'], $row['Telefono2'], $row['fechaIngreso'],
+            $Miembro = new Miembro($row['idMiembro'], $row['codigo'], $row['tipoDocumento'], $row['numeroDocumento'], 
+            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['eMail'],
+            $row['faceBook'], $row['direccion'], $row['telefono1'], $row['telefono2'], $row['fechaIngreso'],
             $row['fechaEgreso'], $row['fechaAlta'], $row['fechaBautismo'], $row['bautizado'], $row['foto'],
             $row['idIglesia'], $row['idLocalidad'], $row['idBarrio']);
             return $Miembro;
         };
         $answer = $this->queryList(
-                "select * from Iglesia.Miembro ;", [''], $mapper);
+                "select * from Iglesia.Miembro;", [''], $mapper);
         return $answer;
     }
 
@@ -53,27 +53,27 @@ class ResourceRepository extends PDORepository {
 
     }
 
-    public function listarNMiembrosDesde($cuantos, $pagina) { //listar los Miembros por página
+    public function listarNMiembrosDesde($cuantos, $pagina) { //LISTAR LOS MIEMBROS POR PÁGINA
         $mapper = function($row) {  
-            $Miembro = new Miembro($row['idMiembro'], $row['Codigo'], $row['tipoDocumento'],$row['numeroDocumento'], 
-            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['mail'],
-            $row['FaceBook'], $row['direccion'], $row['Telefono1'], $row['Telefono2'], $row['fechaIngreso'],
+            $Miembro = new Miembro($row['idMiembro'], $row['codigo'], $row['tipoDocumento'],$row['numeroDocumento'], 
+            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['eMail'],
+            $row['faceBook'], $row['direccion'], $row['telefono1'], $row['telefono2'], $row['fechaIngreso'],
             $row['fechaEgreso'], $row['fechaAlta'], $row['fechaBautismo'], $row['bautizado'], $row['foto'],
             $row['idIglesia'], $row['idLocalidad'], $row['idBarrio']);
             return $Miembro;
         };
         $desde = $pagina*(int)$cuantos;
         $answer = $this->queryListLimit(
-                "select * from Iglesia.Miembro order by apellido,nombre ASC LIMIT :cuantos OFFSET :desde ;", $desde, (int)$cuantos, $mapper);
+                "select * from Iglesia.Miembro order by apellido, nombre ASC LIMIT :cuantos OFFSET :desde ;", $desde, (int)$cuantos, $mapper);
         return $answer;
     }
 
-    /*---------------------------------------Getters----------------------------------------*/
+    /*---------------------------------------GETTERS----------------------------------------*/
     public function getMiembro($tipoDocumento, $numeroDocumento) {
         $mapper = function($row) {
-            $Miembro = new Miembro($row['idMiembro'], $row['Codigo'], $row['tipoDocumento'],$row['numeroDocumento'], 
-            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['mail'],
-            $row['FaceBook'], $row['direccion'], $row['Telefono1'], $row['Telefono2'], $row['fechaIngreso'],
+            $Miembro = new Miembro($row['idMiembro'], $row['codigo'], $row['tipoDocumento'],$row['numeroDocumento'], 
+            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['eMail'],
+            $row['faceBook'], $row['direccion'], $row['telefono1'], $row['telefono2'], $row['fechaIngreso'],
             $row['fechaEgreso'], $row['fechaAlta'], $row['fechaBautismo'], $row['bautizado'], $row['foto'],
             $row['idIglesia'], $row['idLocalidad'], $row['idBarrio']);
             return $Miembro;
@@ -115,15 +115,15 @@ class ResourceRepository extends PDORepository {
 
     public function getMiembroPorId($id){
         $mapper = function($row) {
-            $Miembro = new Miembro($row['idMiembro'], $row['Codigo'], $row['tipoDocumento'],$row['numeroDocumento'], 
-            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['mail'],
-            $row['FaceBook'], $row['direccion'], $row['Telefono1'], $row['Telefono2'], $row['fechaIngreso'],
+            $Miembro = new Miembro($row['idMiembro'], $row['codigo'], $row['tipoDocumento'],$row['numeroDocumento'], 
+            $row['nombre'], $row['apellido'], $row['fechaNacimiento'],$row['sexo'], $row['eMail'],
+            $row['faceBook'], $row['direccion'], $row['telefono1'], $row['telefono2'], $row['fechaIngreso'],
             $row['fechaEgreso'], $row['fechaAlta'], $row['fechaBautismo'], $row['bautizado'], $row['foto'],
             $row['idIglesia'], $row['idLocalidad'], $row['idBarrio']);
             return $Miembro;
         };
         $answer = $this->queryItem(
-                "select * from Iglesia.Miembro where id=?;", [$id], $mapper);
+                "select * from Iglesia.Miembro where idMiembro=?;", [$id], $mapper);
         return $answer;
     }
 
@@ -143,19 +143,19 @@ class ResourceRepository extends PDORepository {
                 "insert into Iglesia.Usuario (idMiembro, idTipoUsuario, username, password, habilitado) values (?, ?, ?, ?, ?);", [$idMiembro, $idTipoUsuario, $username, $password, $habilitado]);
     }
 
-    public function altaMiembro($Codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
-        $fechaNacimiento, $sexo, $mail, $FaceBook, $direccion, $Telefono1, $Telefono2,
-        $fechaIngreso, $fechaEgreso, $fechaAlta, $fechaBautismo, $bautizado, $foto, $idIglesia,
-        $idLocalidad, $idBarrio){
+    public function altaMiembro($codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
+        $fechaNacimiento, $sexo, $mail, $faceBook, $direccion, $telefono1, $telefono2,
+        $fechaIngreso, $bautizado, $fechaBautismo, $foto, $idIglesia,
+        $idLocalidad, $idBarrio, $fechaAlta){
         $this->querySinReturn(
-                "insert into Iglesia.Miembro (Codigo, tipoDocumento, numeroDocumento, nombre, apellido, 
-        fechaNacimiento, sexo, mail, FaceBook, direccion, Telefono1, Telefono2,
-        fechaIngreso, fechaEgreso, fechaAlta, fechaBautismo, bautizado, foto, idIglesia,
-        idLocalidad, idBarrio) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", 
-        [$Codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
-        $fechaNacimiento, $sexo, $mail, $FaceBook, $direccion, $Telefono1, $Telefono2,
-        $fechaIngreso, $fechaEgreso, $fechaAlta, $fechaBautismo, $bautizado, $foto, $idIglesia,
-        $idLocalidad, $idBarrio]);
+                "insert into Iglesia.Miembro (codigo, tipoDocumento, numeroDocumento, nombre, apellido, 
+        fechaNacimiento, sexo, eMail, faceBook, direccion, telefono1, telefono2,
+        fechaIngreso, bautizado, fechaBautismo, foto, idIglesia,
+        idLocalidad, idBarrio, fechaAlta) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", 
+        [$codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
+        $fechaNacimiento, $sexo, $eMail, $faceBook, $direccion, $telefono1, $telefono2,
+        $fechaIngreso, $bautizado, $fechaBautismo, $foto, $idIglesia,
+        $idLocalidad, $idBarrio, $fechaAlta]);
     }
 
    /*---------------------------------------Baja----------------------------------------*/
@@ -170,19 +170,19 @@ class ResourceRepository extends PDORepository {
     }
 
     /*---------------------------------------Modificacion----------------------------------------*/
-    public function modificarMiembro($Codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
-        $fechaNacimiento, $sexo, $mail, $FaceBook, $direccion, $Telefono1, $Telefono2,
+    public function modificarMiembro($codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
+        $fechaNacimiento, $sexo, $eMail, $faceBook, $direccion, $telefono1, $telefono2,
         $fechaIngreso, $fechaEgreso, $fechaAlta, $fechaBautismo, $bautizado, $foto, $idIglesia,
-        $idLocalidad, $idBarrio) {
+        $idLocalidad, $idBarrio, $id) {
         $this->querySinReturn(
-                "UPDATE Iglesia.Miembro set Codigo=?, tipoDocumento=?, numeroDocumento=?, nombre=?, apellido=?, 
-        fechaNacimiento=?, sexo=?, mail=?, FaceBook=?, direccion=?, Telefono1=?, Telefono2=?,
+                "UPDATE Iglesia.Miembro SET codigo=?, tipoDocumento=?, numeroDocumento=?, nombre=?, apellido=?, 
+        fechaNacimiento=?, sexo=?, eMail=?, faceBook=?, direccion=?, telefono1=?, telefono2=?,
         fechaIngreso=?, fechaEgreso=?, fechaAlta=?, fechaBautismo=?, bautizado=?, foto=?, idIglesia=?,
-        idLocalidad=?, idBarrio=?;", 
-        [$Codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
-        $fechaNacimiento, $sexo, $mail, $FaceBook, $direccion, $Telefono1, $Telefono2,
+        idLocalidad=?, idBarrio=? WHERE idMiembro=?;", 
+        [$codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, 
+        $fechaNacimiento, $sexo, $eMail, $faceBook, $direccion, $telefono1, $telefono2,
         $fechaIngreso, $fechaEgreso, $fechaAlta, $fechaBautismo, $bautizado, $foto, $idIglesia,
-        $idLocalidad, $idBarrio]);
+        $idLocalidad, $idBarrio, $id]);
     }
 
     public function modificarIglesia($idIglesia, $idPastor, $idPastora, $Nombre, $direccion, $telefono, $EMail, $FaceBook) {
@@ -210,7 +210,7 @@ class ResourceRepository extends PDORepository {
     }
     public function tienePermisos($id, $accion){
         return $this->validar(
-                "SELECT COUNT(*) AS cantidad from Usuario where (id=?)and(idTipoUsuario in (select R.nivel from Acciones A inner join Rol R on(R.nivel>=A.MinRol) where (A.accion=?)));", [$id, $accion]);       
+                "SELECT COUNT(*) AS cantidad from Usuario where (idUsuario=?)and(idTipoUsuario in (select R.nivel from Acciones A inner join tipoUsuario R on(R.nivel>=A.MinRol) where (A.accion=?)));", [$id, $accion]);
     }
     public function tienePermisosSeccion($id, $seccion){
         return $this->validar(

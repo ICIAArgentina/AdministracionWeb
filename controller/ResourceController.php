@@ -37,7 +37,8 @@ class ResourceController {
         $email = $configuracion->getEmail();
         $seccion = 'index/'.$seccion.'.twig';
         $view = new HomeView();
-        $view->show($configuracion,$seccion);  //todos los parametros son objetos de tipo recursoConfiguracion, no un string
+        $view->show($configuracion, $seccion);
+        //TODOS LOS PARAMETROS SON OBJETOS DE TIPO CONFIGURACION, NO UN STRING
     }
     
     public function user($username, $password){
@@ -48,10 +49,10 @@ class ResourceController {
         $idTipoUsuario = ResourceRepository::getInstance()->getNivel($usuario->getIdTipoUsuario());
         $menu = ResourceRepository::getInstance()->getMenu($idTipoUsuario->getNivel());
         $seccion = 'backend/'.$seccion.'.twig';
-        //$recursos contendra los elementos dinamicos que twig debe renderizar dentro de template index
+        //$RECURSOS CONTENDRA LOS ELEMENTOS DINAMICOS QUE TWIG DEBE RENDERIZAR DENTRO DE TEMPLATE INDEX
         $recursos = array('configuracion'=>$configuracion,'datosSeccion'=>$datosSeccion,'menu'=>$menu, 'username'=>$usuario->getUsername());
         $view = new HomeView();
-        $view->show($recursos, $seccion);  //todos los parametros son objetos de tipo recursoConfiguracion, no un string
+        //TODOS LOS PARAMETROS SON OBJETOS DE TIPO CONFIGURACION, NO UN STRING
+        $view->show($recursos, $seccion);
     }
-
 }

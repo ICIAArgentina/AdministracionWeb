@@ -1,6 +1,10 @@
-h3{
-	margin: 10px;
-}
+/* 
+$foreColor = #210021;
+$backColor = #6E256E;
+*/
+
+h3{     margin:
+10px; }
 
 form {
 	text-align: center;
@@ -44,7 +48,7 @@ form label{
 
 #logout{
 	text-align: right;
-	background-color: #C0C0C0;	/*Silver*/
+	background-color: #210021;
 	margin-left:90%;
 	display: inline-block;
 }

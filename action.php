@@ -10,9 +10,12 @@ require_once('model/Resource.php');
 require_once('view/TwigView.php');
 require_once('view/SimpleResourceList.php');
 require_once('view/Home.php');
-if(isset($_SESSION["usuario"])){ 			// verficamos que la variable de sesion haya sido creada
-	$usuario=unserialize($_SESSION["usuario"]); 		// buscamos el valor de sesion de usuario
- 	if(ResourceRepository::getInstance()->usuarioValido($usuario->getUsername(),$usuario->getPassword())) { 			// verificamos que el usuario este habilitado y el password sea correcto
+// VERFICAMOS QUE LA VARIABLE DE SESION HAYA SIDO CREADA
+if(isset($_SESSION["usuario"])){
+	// BUSCAMOS EL VALOR DE SESION DE USUARIO
+	$usuario=unserialize($_SESSION["usuario"]);
+	// VERIFICAMOS QUE EL USUARIO ESTE HABILITADO Y EL PASSWORD SEA CORRECTO
+ 	if(ResourceRepository::getInstance()->usuarioValido($usuario->getUsername(),$usuario->getPassword())) {
 		if(isset($_POST["accion"])){
 			$accion=$_POST["accion"];
 		}
@@ -22,7 +25,8 @@ if(isset($_SESSION["usuario"])){ 			// verficamos que la variable de sesion haya
 			else { $accion="Principal"; }	
 		}
 		if($accion !== null){
-			if(ResourceRepository::getInstance()->tienePermisos($usuario->getId(), $accion)) { //validacion de accion
+			//VALIDACIÓN DE ACCIÓN (QUE TENGA PERMISOS)
+			if(ResourceRepository::getInstance()->tienePermisos($usuario->getId(), $accion)) {
 				switch ($accion) {
 			        case "AgregarUsuario":
 			        	$AltaUsername=$_POST["usuario"];
@@ -49,6 +53,7 @@ if(isset($_SESSION["usuario"])){ 			// verficamos que la variable de sesion haya
 			            header('location:backend.php?seccion=ABMUsuarios');
 			            break;
 			        case "AgregarMiembro":
+			        	$Codigo=$_POST["codigo"];
 			        	$NumeroDocumento=$_POST["dni"];
 			        	$TipoDocumento=$_POST["tipoDoc"];
 			        	$Nombre=$_POST["nombre"];
@@ -63,39 +68,50 @@ if(isset($_SESSION["usuario"])){ 			// verficamos que la variable de sesion haya
 			        	$FechaIngreso=$_POST["fechaIng"];
 			        	$Bautizado=$_POST["bautizado"];
 			        	$FechaBautismo=$_POST["fechaBautismo"];			        	
+			        	$foto=$_POST["foto"];
+			        	$idIglesia=$_POST["idIglesia"];
+			        	$idLocalidad=$_POST["idLocalidad"];
+			        	$idBarrio=$_POST["idBarrio"];
 			        	$FechaAlta=date("Y-m-d");
 			        	if(ResourceRepository::getInstance()->miembroExistente($TipoDocumento,$NumeroDocumento)) {
-			            	header('location:backend.php?seccion=AgregarAlumno&mensaje=existe');			        		
+			            	header('location:backend.php?seccion=AgregarMiembro&mensaje=existe');			        		
 			        	} else {
-			        	ResourceRepository::getInstance()->altaMiembro($TipoDocumento, $NumeroDocumento, $Nombre, $Apellido, $FechaNac, $Sexo, $Mail, $Facebook, $Direccion, $Telefono1, $Telefono2, $FechaIngreso, $Bautizado, $FechaBautismo, $FechaAlta);
-			            header('location:backend.php?seccion=ABMAlumnos');
+			        	ResourceRepository::getInstance()->altaMiembro($Codigo, $TipoDocumento, $NumeroDocumento, $Nombre, $Apellido, $FechaNac, $Sexo, $Mail, $Facebook, $Direccion, $Telefono1, $Telefono2, $FechaIngreso, null, $fechaAlta, $Bautizado, $FechaBautismo, $idIglesia, $idBarrio, $idLocalidad);
+			            header('location:backend.php?seccion=ListadoMiembros');
 			        	}
 			        	break;
-			        case "ModificarAlumno":
+			        case "ModificarMiembro":
 			        	$id=$_POST["id"];
-			        	$tipoDocumento=$_POST["tipoDocumento"];
+			        	$codigo=$_POST["codigo"];
 			        	$numeroDocumento=$_POST["dni"];
+			        	$tipoDocumento=$_POST["tipoDoc"];
 			        	$nombre=$_POST["nombre"];
 			        	$apellido=$_POST["apellido"];
 			        	$fechaNac=$_POST["fechaNac"];
 			        	$sexo=$_POST["sexo"];
-			        	$mail=$_POST["mail"];
+			        	$eMail=$_POST["mail"];
+			        	$faceBook=$_POST["facebook"];			       
 			        	$direccion=$_POST["direccion"];
-			        	$fechaIngreso=$_POST["fechaIng"];
-			        	$fechaEgreso=$_POST["fechaEgreso"];
-			        	ResourceRepository::getInstance()->modificarAlumno($tipoDocumento, $numeroDocumento, $nombre, $apellido, $fechaNac, $sexo, $mail, $direccion, $fechaIngreso, $fechaEgreso, $id);
-			            header('location:backend.php?seccion=ABMAlumnos');
+			        	$telefono1=$_POST["telefono1"];
+			        	$telefono2=$_POST["telefono2"];
+			        	$FechaIngreso=$_POST["fechaIng"];
+			        	$fechaEgreso=$_POST["fechaEgr"];			        	
+			        	$bautizado=$_POST["bautizado"];
+			        	$fechaBautismo=$_POST["fechaBautismo"];			        	
+			        	$foto=$_POST["foto"];
+			        	$idIglesia=$_POST["idIglesia"];
+			        	$idLocalidad=$_POST["idLocalidad"];
+			        	$idBarrio=$_POST["idBarrio"];
+			        	ResourceRepository::getInstance()->modificarMiembro($codigo, $tipoDocumento, $numeroDocumento, $nombre, $apellido, $fechaNac, $sexo, $eMail, $faceBook, $direccion, $telefono1, $telefono2, $FechaIngreso, $fechaEgreso, $fechaAlta, $fechaBautismo, $bautizado, $foto, $idIglesia, $idBarrio, $idLocalidad, $id);
+			            header('location:backend.php?seccion=ABMMiembros');
 			            break;
-			        case "EliminarAlumno":
+			        case "EliminarMiembro":
 			        	$BajaID=$_GET["id"];
-			        	ResourceRepository::getInstance()->bajaAlumno($BajaID);
-			            header('location:backend.php?seccion=ABMAlumnos');
+			        	ResourceRepository::getInstance()->bajaMiembro($BajaID);
+			            header('location:backend.php?seccion=ABMMiembros');
 			            break;
 			        case "Principal":
 			             header('location:backend.php');
-			            break;
-			        case "Listados":
-			            echo "TO DO";
 			            break;
 			        case "Configuracion":
 			        	$titulo=$_POST["titulo"];

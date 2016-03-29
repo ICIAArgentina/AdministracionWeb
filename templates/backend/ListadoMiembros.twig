@@ -5,20 +5,52 @@
 </div>
 {% endblock %}
 {% block contenido %}
-	<table id="tabLista" border=1>
+	<table class="table table-responsive table-hover">
+		<thead>
+			<tr>
+				<th>C&oacute;digo Interno</th>
+				<th>C&oacute;digo</th>
+				<th>Tipo de Documento</th>
+				<th>DNI</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Fecha de Nacimiento</th>
+				<th>Sexo</th>
+				<th>Email</th>
+				<th>Facebook</th>
+				<th>Direcci&oacute;n</th>
+				<th>Tel&eacute;fono 1</th>
+				<th>Tel&eacute;fono 2</th>
+				<th>Fecha de Ingreso</th>
+				<th>Fecha de Alta</th>
+				<th>Bautizado</th>
+				<th>Fecha de Bautismo</th>
+			</tr>
+		</thead>
+		<tbody>
+	{% for item in recursos.datosSeccion.listaMiembros %}
 		<tr>
-			<th>DNI</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-		</tr>
-	{% for item in recursos.datosSeccion.listaAlumnosMatrPaga %}
-		<tr>
+			<td>{{ item.idMiembro }}</td>			
+			<td>{{ item.codigo }}</td>
+			<td>{{ item.tipoDocumeno }}</td>
 			<td>{{ item.numeroDocumento }}</td>
 			<td>{{ item.nombre }}</td>
-			<td>{{ item.apellido }}</td>
+			<td>{{ item.apellido }}</td>					
+			<td>{{ item.fechaNacimiento }}</td>
+			<td>{{ item.sexo }}</td>
+			<td>{{ item.eMail }}</td>
+			<td>{{ item.faceBook }}</td>
+			<td>{{ item.direccion }}</td>
+			<td>{{ item.telefono1 }}</td>
+			<td>{{ item.telefono2 }}</td>
+			<td>{{ item.fechaIngreso }}</td>
+			<td>{{ item.fechaAlta }}</td>
+			<td>{{ item.bautizado }}</td>
+			<td>{{ item.fechaBautismo }}</td>
 		</tr>
+		</tbody>
     {% endfor %}
-	</table>
+	</table> <!--	
 	{% if ( recursos.datosSeccion.cantPaginas > 0 ) %}
 		{% if ( recursos.datosSeccion.pagina == 0 ) or ( recursos.datosSeccion.pagina == 1 )  %} 
 			{% set inicio = 0 %}
@@ -31,17 +63,17 @@
 			{% set fin = recursos.datosSeccion.cantPaginas %}
 		{% endif %}	
 		{% if inicio > 0 %}
-			<a href="backend.php?seccion=ListadoAlumnos&amp;pagina={{ recursos.datosSeccion.pagina - 1 }}"><</a> | 
+			<a href="backend.php?seccion=ListadoMiembros&amp;pagina={{ recursos.datosSeccion.pagina - 1 }}"><</a> | 
 		{% endif %}
 		{% for i in inicio..fin %}	
 			{% if i == recursos.datosSeccion.pagina %}
 			    {{ i + 1 }}
 			{% else %}
-				<a href="backend.php?seccion=ListadoAlumnos&amp;pagina={{ i }}">{{ i + 1 }}</a>
+				<a href="backend.php?seccion=ListadoMiembros&amp;pagina={{ i }}">{{ i + 1 }}</a>
 			{% endif %}
 		{% endfor %}
 		{% if fin <	recursos.datosSeccion.cantPaginas %}
-			 | <a href="backend.php?seccion=ListadoAlumnos&amp;pagina={{ recursos.datosSeccion.pagina + 1 }}">></a> 
+			 | <a href="backend.php?seccion=ListadoMiembros&amp;pagina={{ recursos.datosSeccion.pagina + 1 }}">></a> 
 		{% endif %}
-	{% endif %}
+	{% endif %}-->
 {% endblock %}

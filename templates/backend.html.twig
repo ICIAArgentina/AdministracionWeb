@@ -5,9 +5,10 @@
 	<meta charset="utf-8">
 	<title>​ Backend </title>	
 	<link rel="stylesheet" type="text/css" href="CSS/styleIndex.css">
-	<link rel="stylesheet" type="text/css" href="CSS/styleAltaAlumnos.css">
+	<link rel="stylesheet" type="text/css" href="CSS/styleAdicional.css">
 </head>
 <body>
+	<!--DESDE RESOURCECONTROLLER.PHP->BACKEND(), SE RECIBE, RECURSOS, QUE TIENE: $recursos = array('configuracion','datosSeccion','menu', 'username');-->
 	<div id="login">Bienvenido, {{ recursos.username }} <a href="logout.php">Cerrar Sesion</a> </div>
 	<div id="dTitle">
 		<div id="dTitleC1">
@@ -26,7 +27,9 @@
 		</div>
 		<div id="columnaCentro">
 			{% block titulo %}{% endblock %}
-		 	{% block contenido %}{% endblock %}
+			<div id="fLoginSubmit">
+		 		{% block contenido %}{% endblock %}
+		 	</div>
 		</div>
 	</div>
 	<div id="pie">

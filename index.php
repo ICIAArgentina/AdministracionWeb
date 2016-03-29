@@ -12,9 +12,11 @@ require_once('view/Home.php');
 $configuracion = ResourceRepository::getInstance()->getConfiguracion();
 if ( $configuracion->getHabilitado() ){
 	if(isset($_GET["seccion"])){
-		ResourceController::getInstance()->home($_GET["seccion"]); //cargar la seccion
+		//CARGAR LA SECCION
+		ResourceController::getInstance()->home($_GET["seccion"]);
 	}else{
-    	ResourceController::getInstance()->home("Principal"); //cargar el inicio
+		//CARGAR EL INICIO
+    	ResourceController::getInstance()->home("Principal");
 	}
 }
 else

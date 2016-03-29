@@ -1,7 +1,7 @@
 <?php
 class HomeView extends TwigView {
     public function show($recursos,$seccion) {
-        //Realizamos la renderizacion llamando el metodo render de la clase con los parametros necesarios
+        //REALIZAMOS LA RENDERIZACION LLAMANDO EL METODO RENDER DE LA CLASE CON LOS PARAMETROS NECESARIOS
         echo self::getTwig()->render($seccion, array('recursos' => $recursos));
     }
 }
