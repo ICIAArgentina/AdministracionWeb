@@ -1,51 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="author" content="Ricardo Gamarra">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>​{{ recursos.titulo }}</title>	
-	<link rel="stylesheet" type="text/css" href="CSS/styleIndex.css">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <meta name="author" content="Ricardo Gamarra">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>​{{ recursos.titulo }}</title>   
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-	<!-- Latest compiled JavaScript -->
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 </head>
 <body>
-	<div class="container">
-		<div id="login">Sesi&oacute;n no Iniciada <a href="login.php">Iniciar Sesi&oacute;n</a></div>
-		<header>
-			<h1>{{ recursos.titulo }}</h1>
-			<figure>
-				<img id="imgT" alt="Foto Pastores" longdesc="Foto%20de%20los%20pastores%20de%20la%20iglesia" src="IMG/pastores3.jpg">
-			</figure>
-		</header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Men&uacute;n</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="login.php">Iniciar Sesi&oacute;n</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#">Acerca de Nosotros</a>
+                    </li>
+                    <li>
+                        <a href="#">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="#">Invasi&oacute;n</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-		<div id="contenido">
-			<div id="columnaIzq">
-				<div id="contenedorMenu">
-					<ul id= "menu">
-						<li><a class="aNav" href="index.php">Inicio</a></li>
-						<li><a class="aNav" href="index.php?seccion=Historia">Acerca de Nosotros</a></li>
-						<li><a class="aNav" href="index.php?seccion=Invasion">Invasi&oacute;n</a></li>
-						<li><a class="aNav" href="index.php?seccion=Informacion">Informacion</a></li>
-						<li><a class="aNav" href="index.php?seccion=Contacto">Contacto</a></li>
-					</ul>
-				</div>
-			</div>
-			<div id="columnaCentro">
-		 		<div id="contenidoMain">{% block contenido %}{% endblock %}
-				</div>
-			</div>
-		</div>
-		<footer>	
-			<p>ICIA - Tu Hogar de Paz</p>
-	  		<p><a href="mailto:{{ recursos.email }}">Contactar</a>.</p>
-		</footer>
-	</div>
+    <!-- Half Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <img class="img-responsive center-block" src="IMG/sliderIndex1/apostol1.jpg" style="width:800px; height:420px;">
+                <div class="carousel-caption">
+                    <h2>En Convocatoria</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <img class="img-responsive center-block" src="IMG/sliderIndex1/pastores1a.jpg" style="width:800px; height:420px;">                    
+                <div class="carousel-caption">
+                    <h2>Nuestros Pastores</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <img class="img-responsive center-block" src="IMG/sliderIndex1/apostolFolleto.jpg" style="width:800px; height:420px;"> 
+                <div class="carousel-caption">
+                    <h2>Presentando la Invasi&oacute;n del Amor de Dios en La Plata</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>{{ recursos.titulo }}</h1>
+                {% block contenido %}{% endblock %}
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>ICIA - Tu Hogar de Paz</p>
+                    <p><a href="mailto:{{ recursos.email }}">Contactar</a>.</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
 </body>
-</html>
