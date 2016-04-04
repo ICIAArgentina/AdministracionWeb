@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>​{{ recursos.titulo }}</title>   
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
@@ -32,16 +33,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Inicio</a>
+                        <a href="index.php?seccion=Principal">Inicio</a>
                     </li>
                     <li>
-                        <a href="#">Acerca de Nosotros</a>
+                        <a href="index.php?seccion=Acerca">Acerca de Nosotros</a>
                     </li>
                     <li>
                         <a href="#">Contacto</a>
                     </li>
                     <li>
-                        <a href="#">Invasi&oacute;n</a>
+                        <a href="index.php?seccion=queEsInvasion">Invasi&oacute;n</a>
                     </li>
                 </ul>
             </div>
@@ -63,16 +64,16 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <img class="img-responsive center-block" src="IMG/sliderIndex1/apostol1.jpg" style="width:800px; height:420px;">
+                <img class="img-responsive center-block" src="IMG/sliderIndex1/pastores1a.jpg" style="width:800px; height:420px;">
                 <div class="carousel-caption">
-                    <h2>En Convocatoria</h2>
+                    <h2>Nuestros Pastores</h2>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <img class="img-responsive center-block" src="IMG/sliderIndex1/pastores1a.jpg" style="width:800px; height:420px;">                    
+                <img class="img-responsive center-block" src="IMG/sliderIndex1/apostol1.jpg" style="width:800px; height:420px;">                    
                 <div class="carousel-caption">
-                    <h2>Nuestros Pastores</h2>
+                    <h2>En Convocatoria</h2>
                 </div>
             </div>
             <div class="item">
@@ -107,13 +108,10 @@
 
         <!-- Footer -->
         <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>ICIA - Tu Hogar de Paz</p>
-                    <p><a href="mailto:{{ recursos.email }}">Contactar</a>.</p>
-                </div>
+            <div>
+                <a href="http://www.facebook.com/ICIAabrahamvazquez" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="http://www.youtube.com/cielosabiertoschaco" target="_blank"><i class="fa fa-youtube"></i></a>
             </div>
-            <!-- /.row -->
         </footer>
 
     </div>

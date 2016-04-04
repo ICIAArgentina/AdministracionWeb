@@ -1,51 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="author" content="grupo 31">
+	<meta name="author" content="Ricardo Gamarra">
 	<meta charset="utf-8">
-	<title>​ Backend </title>	
-	<link rel="stylesheet" type="text/css" href="CSS/styleIndex.css">
-	<link rel="stylesheet" type="text/css" href="CSS/styleAdicional.css">
-	<link rel="stylesheet" type="text/css" href="CSS/styleIndex.css">
-	<!-- Latest compiled and minified CSS -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>​ Administraci&oacute;n </title>
+	<link rel="stylesheet" type="text/css" href="CSS/styleBackend.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<body>
 	<!--DESDE RESOURCECONTROLLER.PHP->BACKEND(), SE RECIBE, RECURSOS, QUE TIENE: $recursos = array('configuracion','datosSeccion','menu', 'username');-->
-	<div id="login">Bienvenido, {{ recursos.username }} <a href="logout.php">Cerrar Sesion</a> </div>
-	<div id="dTitle">
-		<div id="dTitleC1">
-			<h3></h3>
-		</div>
-	</div>	
-	<div id="contenido">
-		<div id="columnaIzq">
-			<div id="contenedorMenu">	
-				<ul id="menu">					
-				{% for item in recursos.menu %}
-		            <li><a href="backend.php?seccion={{ item.accion }}">{{ item.descripcion }}</a></li>
-		        {% endfor %}
-				</ul>
-		</div>	
-		</div>
-		<div id="columnaCentro">
-			{% block titulo %}{% endblock %}
-			<div id="fLoginSubmit">
-		 		{% block contenido %}{% endblock %}
-		 	</div>
-		</div>
+<body>
+	<!--PANEL DE NAVEGACIÓN HORIZONTAL SUPERIOR-->
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-briefcase"></span></a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Panel de Aministraci&oacute;n de ICIA - Tu Hogar de Paz</a></li>
+	        <li><a href="index.php">Principal</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	      	<li><a href="#">Bienvenido {{ recursos.username }}</a></li>
+	        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesi&oacute;n</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+ 	<!--FIN PANEL DE NAVEGACIÓN HORIZONTAL SUPERIOR-->
+
+	<!--CONTENEDOR GENERAL--> 	
+	<div class="container-fluid text-center">   
+	  <div class="row content">
+	    <div class="col-sm-2 sidenav">
+		{% for item in recursos.menu %}
+		    <li><a href="backend.php?seccion={{ item.accion }}">{{ item.descripcion }}</a></li>
+		{% endfor %}
+	    </div>
+
+	    <!--CONTENIDO QUE VARÍA SEGÚN LA SEECIÓN-->
+	    <div class="col-sm-8 text-left"> 
+			{% block contenido %}
+			{% endblock %}
+	    </div>
+	    <!--FIN CONTENIDO QUE SEGÚN LA SEECIÓN-->
+
+	    <!--ANUNCIOS-->
+	    <div class="col-sm-2 sidenav">
+	      <div class="well">
+	        <p>Encuentros</p>
+	      </div>
+	      <div class="well">
+	        <p>Convocatorias</p>
+	      </div>
+	      <div class="well">
+	        <p>Escuela de Formaci&oacute;n</p>
+	      </div>
+	    </div>
+	    <!--FIN ANUNCIOS-->
+	  </div>
 	</div>
-	<div id="pie">
-		<footer>
-			<p>ICIA - Tu Hogar de Paz</p>
-	  		<p><a href="mailto:{{ recursos.configuracion.email }}">Contactar</a>.</p>
-		</footer>
-	</div>
+	<!--FIN CONTENEDOR GENERAL--> 	
+
+	<!--PIE DE PÁGINA--> 	
+	<footer class="container-fluid text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>ICIA - Tu Hogar de Paz</p>
+                <p><a href="mailto:{{ recursos.email }}">Contactar</a>.</p>
+            </div>
+        </div>
+	</footer>	
+	<!--FIN PIE DE PÁGINA-->
 </body>
 </html>

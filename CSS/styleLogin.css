@@ -1,0 +1,28 @@
+.backgroundImageCVR{
+  padding:15px;
+}
+
+.background-image{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  background:url('../IMG/pastores1.jpg')no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index:1;	
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px); 
+}
+
+.content{
+  position:relative;
+  z-index:2;
+  color:#fff;
+}

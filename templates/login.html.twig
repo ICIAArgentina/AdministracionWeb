@@ -3,34 +3,71 @@
 <head>
 	<meta name="author" content="Ricardo Gamarra">
 	<meta charset="utf-8">
-	<title>​Acceder al Administraci&oacuten</title>	
-	<link rel="stylesheet" type="text/css" href="CSS/styleIndex.css">
+	<title>​Acceder al Administraci&oacuten</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>		
+	<link rel="stylesheet" type="text/css" href="CSS/styleLogin.css">
 </head>
 <body>
-	<div id="login">Bienvenido</div>
-		<section>
-			<div id="dTitle">
-				<div id="dTitleC1">
-					<h3>Identificarse</h3>
-				</div>
-			</div>	
-			<form id="fLogin" action="login.php" method="post">
-				<label for="nombre">Usuario: </label>
-				<div id="inputBorder">
-					<input class="fDatos" type="text" name="nombre" id="nombre" placeholder="Usuario" required=""/><br/>
-				</div>
-				<label for="password">Contrase&ntildea: </label>
-				<div id="inputBorder">
-					<input class="fDatos" type="password" name="password" id="password" placeholder="Contraseña" required=""/>
-				</div>
-
-				<div>
-					<button class="bDatos" type="submit" value="Ingresar">Ingresar</button>
-					<form id="fLoginSubmit" action="index.php" method="post">
-						<button class="bDatos" type="submit" value="Cancelar">Cancelar</button>
-					</form>
-				</div>
-			</form>
-		</section>
+    <div class="container">
+        <div class="backgroundImageCVR">
+            <div class="background-image"></div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-7">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <span class="glyphicon glyphicon-lock"></span> Identificarse</div>
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form" action="login.php" method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">
+                                        Usuario</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Usuario" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">
+                                        Clave</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Contrase&ntilde;a" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"/>
+                                                Recordarme
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group last">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="submit" class="btn btn-success btn-sm">
+                                            Ingresar</button>
+                                             <button type="reset" class="btn btn-default btn-sm">
+                                            Borrar</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="panel-footer">
+                                No est&aacute; registrado? <a href="http://www.jquery2dotnet.com">Registrarse</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
