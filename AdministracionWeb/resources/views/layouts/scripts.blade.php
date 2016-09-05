@@ -1,0 +1,1 @@
+{!! Html::script('js/layouts/baseData.js') !!}
