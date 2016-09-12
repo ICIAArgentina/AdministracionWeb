@@ -57,5 +57,4 @@
 
 @section('scripts')
     {!! Html::script('js/funciones/focus.js') !!}
-	{!! Html::script('js/layouts/baseData.js') !!}
 @endsection

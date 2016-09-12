@@ -16,7 +16,3 @@
 		</div>
 	</div>
 @endsection
-
-@section('scripts')
-	{!! Html::script('js/layouts/baseData.js') !!}
-@endsection

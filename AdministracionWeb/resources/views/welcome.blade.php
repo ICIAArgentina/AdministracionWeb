@@ -12,7 +12,3 @@
     @include('layouts.carousel')
     @include('layouts.footer')
 @endsection
-
-@section('scripts')
-	{!! Html::script('js/layouts/baseData.js') !!}
-@endsection

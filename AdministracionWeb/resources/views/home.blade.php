@@ -8,7 +8,7 @@
                 <div class="panel-heading">Panel de Control</div>
 
                 <div class="panel-body">
-                    Bienvenido {{ Auth::user()->name }} !!!
+                    Bienvenido {{ ucwords(Auth::user()->name) }} !!!
                 </div>
             </div>
         </div>

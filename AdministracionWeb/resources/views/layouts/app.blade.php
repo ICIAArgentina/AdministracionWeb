@@ -51,11 +51,26 @@
                 <ul class="nav navbar-nav navbar-right" id="navbar-ul">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/login') }}">Iniciar Sesi&oacute;n</a></li>
+                        @if(isset($sections))
+                            @foreach($sections as $section)
+                                <li><a href={{ "/section/" . $section->id }}>{{ $section->title }}</a></li>
+                            @endforeach
+                        @endif
 <!--                        <li><a href="{{ url('/register') }}">Register</a></li>  -->
                     @else
-                        <li><a href="{{ url('/sections') }}">Secciones</a></li>
-                        <li><a href="{{ url('/paragraphs') }}">P&aacute;rrafos de Secciones</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Configuraci&oacute;n <span class="caret"></span>
+                            </a>
+                            
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/sections') }}">Secciones</a></li>
+                                <li><a href="{{ url('/paragraphs') }}">P&aacute;rrafos de Secciones</a></li>
+                                <li><a href="{{ url('/imagenes_portada') }}">Im&aacute;genes Portada</a></li>
+                            </ul>
+                        </li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ ucwords(Auth::user()->name) }} <span class="caret"></span>
@@ -66,7 +81,7 @@
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Logout
+                                        Cerrar Sesi&oacute;n
                                     </a>
 
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

@@ -15,15 +15,20 @@ class SectionsController extends Controller
     /*redirecciona según la sección*/
     public function section($id)
     {
-    	$section = Section::with('paragraphs')->findOrFail($id);
+    	$section = Section::with('paragraphs')->where('id', $id)->get()->first();
+        $sections = Section::all();
 
-    	return view('sections.'.$section->link, ['section' => $section]);
+        if(null !== $section){
+            return view('sections.'.$section->link, ['section' => $section, 'sections' => $sections]);
+        }else{
+            return redirect('/');
+        }
     }
 
     /*para la petición ajax que llena el menú guest*/
     public function getSections()
     {
-        $sections = Section::all();
+        $sections = Section::orderBy('title')->get();
 
         return response()->json(
             $sections->toArray()

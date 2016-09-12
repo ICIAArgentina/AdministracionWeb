@@ -25,7 +25,9 @@ Route::resource('mensajes', 'MensajesController');
 Route::resource('sections', 'SectionsController');
 Route::resource('paragraphs', 'ParagraphController');
 Route::get('imagenes_portada', 'Controller@imagenes_portada');
+Route::post('delete_img_portada', 'FilesController@delete');
 Route::post('apply/upload', 'FilesController@upload');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

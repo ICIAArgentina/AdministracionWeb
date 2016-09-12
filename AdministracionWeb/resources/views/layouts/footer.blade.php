@@ -5,9 +5,9 @@
         </div>
         <div class="panel-body">
             <ul class="contact-details">
-                <li><p><i class="fa fa-map-marker"></i> {{ $empresa->direccion }} </p></li>
-                <li><p><i class="fa fa-phone"></i> {{ $empresa->telefono1 }} </p></li>
-                <li><p><i class="fa fa-envelope"></i> {{ $empresa->email }} </p></li>
+                <li><i class="fa fa-map-marker fa-2"></i> {{ $empresa->direccion }} </li>
+                <li><i class="fa fa-phone fa-2"></i> {{ $empresa->telefono1 }} </li>
+                <li><i class="fa fa-envelope fa-2"></i> {{ $empresa->email }} </li>
             </ul>
         </div>
     </div>

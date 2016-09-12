@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Input;
-use Validator;
-use Redirect;
-use Session;
+use Input, Validator, Redirect, Session, File;
 
 class FilesController extends Controller
 {
@@ -40,5 +37,13 @@ class FilesController extends Controller
 				return Redirect::to('imagenes_portada');
 			}
 		}
+	}
+
+	public function delete(Request $request)
+	{
+		$path = $request->get('path');
+		File::delete($path);
+
+		return redirect('imagenes_portada');
 	}
 }

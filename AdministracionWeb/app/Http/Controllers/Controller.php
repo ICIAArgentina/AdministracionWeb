@@ -17,8 +17,9 @@ class Controller extends BaseController
     public function welcome()
     {
         $empresa = Empresa::findOrFail(1);
+        $sections = Section::all();
 
-    	return view('welcome', ['empresa' => $empresa]);
+    	return view('welcome', ['empresa' => $empresa, 'sections' => $sections]);
     }
 
     public function home(){
@@ -27,6 +28,6 @@ class Controller extends BaseController
 
     public function imagenes_portada()
     {
-    	return view('imagenes.portada');
+    	return view('imagenes.thumbnail');
     }
 }
