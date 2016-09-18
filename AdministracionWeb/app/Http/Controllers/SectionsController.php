@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Empresa;
 use App\Section;
+use App\Post;
 
 use Validator, Redirect, Input, Session;
 
@@ -15,6 +16,10 @@ class SectionsController extends Controller
     /*redirecciona según la sección*/
     public function section($id)
     {
+        if($id == 1){
+            return redirect('/posts');
+        }
+
     	$section = Section::with('paragraphs')->where('id', $id)->get()->first();
         $sections = Section::all();
 
@@ -23,6 +28,15 @@ class SectionsController extends Controller
         }else{
             return redirect('/');
         }
+    }
+
+    public function posts()
+    {
+        $posts = Post::orderBy('created_at')->paginate(10);
+        $section = Section::with('paragraphs')->where('id', 1)->get()->first();
+        $sections = Section::all();
+
+        return view('sections.posts', ['posts' => $posts, 'section' => $section, 'sections' => $sections]);
     }
 
     /*para la petición ajax que llena el menú guest*/

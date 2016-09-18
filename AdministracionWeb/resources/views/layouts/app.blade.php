@@ -65,6 +65,7 @@
                             </a>
                             
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/posts') }}">Noticias</a></li>
                                 <li><a href="{{ url('/sections') }}">Secciones</a></li>
                                 <li><a href="{{ url('/paragraphs') }}">P&aacute;rrafos de Secciones</a></li>
                                 <li><a href="{{ url('/imagenes_portada') }}">Im&aacute;genes Portada</a></li>
