@@ -181,9 +181,9 @@ return [
         /*
         *Agregados Richard
         */
-        Illuminate\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-Zizaco\Entrust\EntrustServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -230,7 +230,8 @@ Zizaco\Entrust\EntrustServiceProvider::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Html' => Illuminate\Html\HtmlFacade::class,
+
+        'Html' => Collective\Html\HtmlFacade::class,
         'Form' => Illuminate\Html\FormFacade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Image' => Intervention\Image\ImageServiceProvider::class,
